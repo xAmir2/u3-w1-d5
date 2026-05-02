@@ -1,4 +1,5 @@
 import { Component, createRef } from "react";
+import Spinner from "react-bootstrap/Spinner";
 import { MovieCard } from "./MovieCard";
 
 export class MovieSlider extends Component {
@@ -7,6 +8,7 @@ export class MovieSlider extends Component {
 
     this.state = {
       movies: [],
+      loading: true,
     };
 
     this.rowRef = createRef();
@@ -20,9 +22,15 @@ export class MovieSlider extends Component {
     fetch(`https://www.omdbapi.com/?s=${this.props.query}&apikey=e5613b35`)
       .then((res) => res.json())
       .then((data) => {
-        this.setState({ movies: data.Search || [] });
+        this.setState({
+          movies: data.Search || [],
+          loading: false,
+        });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        this.setState({ loading: false });
+      });
   };
 
   scroll = (direction) => {
@@ -59,14 +67,20 @@ export class MovieSlider extends Component {
           </div>
         </div>
 
-        <div
-          ref={this.rowRef}
-          className="d-flex overflow-auto gap-2 pb-2 movie-row"
-        >
-          {this.state.movies.map((movie, i) => (
-            <MovieCard key={i} movie={movie} />
-          ))}
-        </div>
+        {this.state.loading ? (
+          <div className="text-center py-4">
+            <Spinner animation="border" variant="light" />
+          </div>
+        ) : (
+          <div
+            ref={this.rowRef}
+            className="d-flex overflow-auto gap-2 pb-2 movie-row"
+          >
+            {this.state.movies.map((movie, i) => (
+              <MovieCard key={i} movie={movie} />
+            ))}
+          </div>
+        )}
       </div>
     );
   }

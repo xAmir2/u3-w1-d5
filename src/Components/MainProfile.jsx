@@ -1,4 +1,21 @@
+import { useState, useEffect } from "react";
+import Spinner from "react-bootstrap/Spinner";
+
 export const MainProfile = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 800); 
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="text-center text-light mt-5">
+        <Spinner animation="border" variant="light" />
+      </div>
+    );
+  }
+
   return (
     <main>
       <div className="container-fluid w-75 text-light">
