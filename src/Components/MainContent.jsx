@@ -2,7 +2,7 @@ import { MovieSlider } from "./MovieSlider";
 
 export default function MainContent() {
   return (
-    <main className="text-light p-3">
+    <section className="text-light p-3">
       <div className="d-flex justify-content-between align-items-center p-2">
         <h1>TV Shows</h1>
       </div>
@@ -14,6 +14,6 @@ export default function MainContent() {
       <MovieSlider title="Fast & Furious Saga" query="fast and furious" />
       <MovieSlider title="Disney Classics" query="disney" />
       <MovieSlider title="Avatar" query="Avatar" />
-    </main>
+    </section>
   );
 }
