@@ -27,5 +27,9 @@
 .img-slider:hover {
   transform: scale(1.2);
   z-index: 10;
-  cursor: pointer;;
+  cursor: pointer;
+}
+
+.pointer {
+  cursor: pointer;
 }

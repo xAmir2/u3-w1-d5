@@ -1,4 +1,4 @@
-export const Navbar = () => {
+export const Navbar = ({ setPage }) => {
   return (
     <nav
       className="navbar navbar-expand-lg bg-black border-bottom border-body"
@@ -25,7 +25,7 @@ export const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a className="nav-link pointer" onClick={() => setPage("home")}>
                 Home
               </a>
             </li>
@@ -109,17 +109,26 @@ export const Navbar = () => {
 
               <ul className="dropdown-menu dropdown-menu-start dropdown-menu-lg-end">
                 <li>
-                  <a className="dropdown-item" href="profilepage.html">
+                  <a
+                    className="dropdown-item pointer"
+                    onClick={() => setPage("profile")}
+                  >
                     Manage Profile
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="profilepage.html">
+                  <a
+                    className="dropdown-item pointer"
+                    onClick={() => setPage("profile")}
+                  >
                     Account
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="settingspage.html">
+                  <a
+                    className="dropdown-item pointer"
+                    onClick={() => setPage("settings")}
+                  >
                     Settings
                   </a>
                 </li>
